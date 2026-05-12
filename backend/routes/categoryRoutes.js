@@ -10,7 +10,7 @@ const { protectAdmin } = require("../middlewares/adminAuthMiddleware.js");
  
 router.route("/").post(protectAdmin, createCategory);
  
-router.get("/", getAllCategory);
+router.get("/all", getAllCategory);
  
 router
   .route("/:id")

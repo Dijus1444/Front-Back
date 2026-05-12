@@ -29,7 +29,7 @@ export const AdminLayout = () => {
             <nav>
                 <h2>ADMIN panel</h2>
 
-                <p>Welcome, {user.name}!</p>
+                <p>Welcome, {user.userName}!</p>
 
                 <NavLink to="/admindashboard/users">Users</NavLink>
                 <br />

@@ -12,6 +12,7 @@ export const CategoryPanel = () => {
         try {
             const data = await getAllCategories();
             setCategories(data);
+            console.log(data)
         } catch (err) { console.error(err); }
     };
 
@@ -22,17 +23,18 @@ export const CategoryPanel = () => {
             if (editingCategory) {
                 const updated = await updateCategory(editingCategory._id, categoryName);
 
-                setCategories(categories.map(el =>
-                    el._id === editingCategory._id ? updated : el
-                ));
+                setCategories(
+                    categories.map((el) =>
+                    (el._id === editingCategory._id ? updated : el))
+                );
 
                 setEditingCategory(null);
+                setCategoryName("");
             } else {
                 const newCategory = await createCategory(categoryName);
                 setCategories([...categories, newCategory]);
+                setCategoryName("");
             }
-
-            setCategoryName("");
         } catch (err) { console.error(err); }
     };
 
@@ -57,7 +59,7 @@ export const CategoryPanel = () => {
                     <li key={el._id}>
                         <span>{el.name}</span>
         <button onClick={()=> handleEdit(el)}>Edit</button>
-        <button onClick={()=> handleEdit(el._id)}>Delete</button>
+        <button onClick={()=> handleDelete(el._id)}>Delete</button>
                     </li>
                 ))}
             </ul>

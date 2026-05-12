@@ -13,7 +13,7 @@ export const getAllCategories = async() => {
 };
 
 // create category
-export const createCategory = async(categorieName) => {
+export const createCategory = async( name ) => {
     const token = getToken();
 
     const response = await fetch(`${API_URL}`, {
@@ -22,7 +22,7 @@ export const createCategory = async(categorieName) => {
         {"Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({catgeoryName}),
+        body: JSON.stringify({ name }),
     });
     if (!response) throw new Error("Failed to fetch categories");
     return response.json();
@@ -31,7 +31,7 @@ export const createCategory = async(categorieName) => {
 
 // update category
 
-export const updateCategory = async(id, categorieName) => {
+export const updateCategory = async(id, name ) => {
     const token = getToken();
 
     const response = await fetch(`${API_URL}/${id}`, {
@@ -40,7 +40,7 @@ export const updateCategory = async(id, categorieName) => {
         {"Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({catgeoryName}),
+        body: JSON.stringify({ name }),
     });
     if (!response) throw new Error("Failed to update categories");
     return response.json();

@@ -6,6 +6,8 @@ import { RegisterPage } from "./pages/RegisterPage";
 import { LoginPage } from "./pages/LoginPage";
 import { AdminLayout } from "./layouts/AdminLayout";
 import { CategoryPanel } from "./components/CategoryPanel";
+import { DishPanel } from "./components/DishPanel";
+
 
 function App() {
   return (
@@ -14,12 +16,12 @@ function App() {
         <Route path="/" element={<Home/>}/>
         <Route path="/register" element={<RegisterPage/>}/>
         <Route path="/login" element={<LoginPage/>}/>
-        <Route path="/admindashboard" element={<AdminLayout/>}/>
+        <Route path="/admindashboard" element={<AdminLayout/>}>
         <Route  index element={<p>Welcome to admin panel</p>}/>
         <Route  path="users" element={<p>Welcome to users information</p>}/>
-        <Route  path="dishes" element={<p>Welcome to dishes information</p>}/>
+        <Route  path="dishes" element={<DishPanel />}/>
         <Route  path="categories" element={<CategoryPanel />}/>
-
+        </Route>
         {/* <Route path="/alldishes" element={<AllDishes/>}/> */}
       </Routes>
     </BrowserRouter>
